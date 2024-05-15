@@ -1,23 +1,25 @@
 variable "repos" {
   type = list(object({
-    name                        = string
-    description                 = optional(string)
-    homepage_url                = optional(string)
-    allow_auto_merge            = optional(bool, true)
-    allow_merge_commit          = optional(bool, false)
-    allow_rebase_merge          = optional(bool, true)
-    allow_squash_merge          = optional(bool, true)
-    allow_update_branch         = optional(bool, true)
-    delete_branch_on_merge      = optional(bool, true)
-    has_discussions             = optional(bool, false)
-    has_downloads               = optional(bool, false)
-    has_issues                  = optional(bool, true)
-    has_projects                = optional(bool, false)
-    has_wiki                    = optional(bool, false)
-    is_template                 = optional(bool, false)
-    visibility                  = optional(string, "public")
-    vulnerability_alerts        = optional(bool, true)
-    web_commit_signoff_required = optional(bool, false)
+    name                            = string
+    description                     = optional(string)
+    homepage_url                    = optional(string)
+    allow_auto_merge                = optional(bool, true)
+    allow_merge_commit              = optional(bool, false)
+    allow_rebase_merge              = optional(bool, true)
+    allow_squash_merge              = optional(bool, true)
+    allow_update_branch             = optional(bool, true)
+    delete_branch_on_merge          = optional(bool, true)
+    has_discussions                 = optional(bool, false)
+    has_downloads                   = optional(bool, false)
+    has_issues                      = optional(bool, true)
+    has_projects                    = optional(bool, false)
+    has_wiki                        = optional(bool, false)
+    is_template                     = optional(bool, false)
+    secret_scanning                 = optional(string, "enabled")
+    secret_scanning_push_protection = optional(string, "enabled")
+    visibility                      = optional(string, "public")
+    vulnerability_alerts            = optional(bool, true)
+    web_commit_signoff_required     = optional(bool, false)
   }))
 }
 
@@ -46,6 +48,15 @@ resource "github_repository" "all" {
   visibility                  = each.value.visibility
   vulnerability_alerts        = each.value.vulnerability_alerts
   web_commit_signoff_required = each.value.web_commit_signoff_required
+
+  security_and_analysis {
+    secret_scanning {
+      status = each.value.secret_scanning
+    }
+    secret_scanning_push_protection {
+      status = each.value.secret_scanning_push_protection
+    }
+  }
 
   lifecycle {
     prevent_destroy = true
