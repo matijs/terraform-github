@@ -23,11 +23,20 @@ variable "repos" {
   }))
 }
 
+variable "branch_protections" {
+  type = list(object({
+    name                            = string
+    enforce_admins                  = optional(bool, true)
+    required_linear_history         = optional(bool, true)
+    strict                          = optional(bool, true)
+    contexts                        = optional(list(string), [])
+    required_approving_review_count = optional(number, 0)
+    require_last_push_approval      = optional(bool, false)
+  }))
+}
+
 resource "github_repository" "all" {
-  for_each = {
-    for repo in var.repos :
-    repo.name => repo
-  }
+  for_each = { for repo in var.repos : repo.name => repo }
 
   name                        = each.value.name
   description                 = each.value.description != null ? "${each.value.description} (managed by Terraform)" : "managed by Terraform"
@@ -64,18 +73,19 @@ resource "github_repository" "all" {
 }
 
 resource "github_branch_protection" "all" {
-  for_each = github_repository.all
+  for_each = { for p in var.branch_protections : p.name => p }
 
-  repository_id           = each.value.node_id
-  pattern                 = each.value.default_branch
-  enforce_admins          = true
-  required_linear_history = true
+  repository_id           = github_repository.all[each.value.name].node_id
+  pattern                 = github_repository.all[each.value.name].default_branch
+  enforce_admins          = each.value.enforce_admins
+  required_linear_history = each.value.required_linear_history
   required_status_checks {
-    strict = true
+    strict   = each.value.strict
+    contexts = each.value.contexts
   }
   required_pull_request_reviews {
-    required_approving_review_count = 0
-    require_last_push_approval      = false
+    required_approving_review_count = each.value.required_approving_review_count
+    require_last_push_approval      = each.value.require_last_push_approval
   }
 }
 
@@ -90,5 +100,5 @@ resource "github_branch_default" "main" {
   for_each = github_branch.main
 
   repository = each.value.repository
-  branch = each.value.branch
+  branch     = each.value.branch
 }
