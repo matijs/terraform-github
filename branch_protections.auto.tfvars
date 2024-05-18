@@ -1,6 +1,6 @@
 branch_protections = [
   {
-    name = "github-terraform"
+    name     = "github-terraform"
     contexts = ["terraform plan"]
   },
   {
