@@ -11,5 +11,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v3.1.1
         with:
           terraform_version: "~> 1.8.0"
+          # no need for the wrapper
+          terraform_wrapper: false
       - run: terraform fmt -check
 
