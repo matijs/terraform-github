@@ -4,7 +4,8 @@ repos = [
     description = "Create GitHub repositories using Terraform"
   },
   {
-    name = "lab.probablerobot.net"
+    name        = "lab.probablerobot.net"
+    description = "Experiments and such"
   }
 ]
 
