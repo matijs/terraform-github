@@ -1,7 +1,7 @@
 branch_protections = [
   {
     name     = "github-terraform"
-    contexts = ["Terraform format check", "Terraform Cloud/matijs/repo-id-53xmSoN1VjKDqvh4"]
+    contexts = ["Terraform format check", "Terraform Cloud/matijs/repo-id-xTdtApDiyNBVUu6g"]
   },
   {
     name     = "lab.probablerobot.net"
