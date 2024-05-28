@@ -17,6 +17,7 @@ variable "repos" {
     is_template                     = optional(bool, false)
     secret_scanning                 = optional(string, "enabled")
     secret_scanning_push_protection = optional(string, "enabled")
+    topics                          = optional(list(string), [])
     visibility                      = optional(string, "public")
     vulnerability_alerts            = optional(bool, true)
     web_commit_signoff_required     = optional(bool, false)
@@ -54,6 +55,7 @@ resource "github_repository" "this" {
   has_projects                = each.value.has_projects
   has_wiki                    = each.value.has_wiki
   is_template                 = each.value.is_template
+  topics                      = each.value.topics
   visibility                  = each.value.visibility
   vulnerability_alerts        = each.value.vulnerability_alerts
   web_commit_signoff_required = each.value.web_commit_signoff_required
