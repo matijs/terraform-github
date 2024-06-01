@@ -10,7 +10,8 @@ branch_protections = [
   {
     name = "lab.probablerobot.net"
     contexts = [
-      "deploy/netlify"
+      "deploy/netlify",
+      "no-fixups",
     ]
   }
 ]
