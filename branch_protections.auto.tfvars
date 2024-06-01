@@ -4,6 +4,7 @@ branch_protections = [
     contexts = [
       "Terraform format check",
       "Terraform Cloud/matijs/repo-id-xTdtApDiyNBVUu6g",
+      "no-fixups",
     ]
   },
   {
