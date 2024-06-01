@@ -7,6 +7,10 @@ repos = [
   {
     name        = "lab.probablerobot.net"
     description = "Experiments and such"
+  },
+  {
+    name        = "dockerfiles"
+    description = "Dockerfiles"
   }
 ]
 

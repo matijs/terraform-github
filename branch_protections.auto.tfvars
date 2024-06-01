@@ -13,5 +13,11 @@ branch_protections = [
       "deploy/netlify",
       "no-fixups",
     ]
+  },
+  {
+    name = "dockerfiles"
+    context = [
+      "no-fixups",
+    ]
   }
 ]
