@@ -16,7 +16,7 @@ branch_protections = [
   },
   {
     name = "dockerfiles"
-    context = [
+    contexts = [
       "no-fixups",
     ]
   }
