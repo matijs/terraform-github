@@ -38,7 +38,7 @@ variable "branch_protections" {
   }))
 }
 
-resource "github_repository" "this" {
+resource "github_repository" "r" {
   for_each = { for repo in var.repos : repo.name => repo }
 
   name                        = each.value.name
@@ -76,11 +76,11 @@ resource "github_repository" "this" {
   }
 }
 
-resource "github_branch_protection" "this" {
+resource "github_branch_protection" "b" {
   for_each = { for p in var.branch_protections : p.name => p }
 
-  repository_id           = github_repository.this[each.value.name].node_id
-  pattern                 = github_repository.this[each.value.name].default_branch
+  repository_id           = github_repository.r[each.value.name].node_id
+  pattern                 = github_repository.r[each.value.name].default_branch
   enforce_admins          = each.value.enforce_admins
   allows_deletions        = each.value.allows_deletions
   allows_force_pushes     = each.value.allows_force_pushes
@@ -99,7 +99,7 @@ resource "github_branch_protection" "this" {
 }
 
 resource "github_branch" "main" {
-  for_each = github_repository.this
+  for_each = github_repository.r
 
   repository = each.value.name
   branch     = "main"
