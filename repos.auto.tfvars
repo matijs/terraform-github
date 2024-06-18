@@ -11,6 +11,10 @@ repos = [
   {
     name        = "dockerfiles"
     description = "Dockerfiles"
+  },
+  {
+    name        = "til"
+    description = "Today I Learned"
   }
 ]
 
