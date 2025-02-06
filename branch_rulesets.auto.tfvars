@@ -1,6 +1,7 @@
 branch_rulesets = [
   {
-    name       = "main"
-    repository = "til"
+    enforcement         = "active"
+    repository          = "til"
+    required_signatures = true
   }
 ]

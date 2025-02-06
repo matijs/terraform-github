@@ -19,8 +19,5 @@ branch_protections = [
     contexts = [
       "no-fixups",
     ]
-  },
-  {
-    name = "til"
   }
 ]

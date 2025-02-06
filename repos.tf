@@ -43,6 +43,7 @@ variable "branch_rulesets" {
     name                            = optional(string, "main-branch-protection")
     repository                      = string
     enforcement                     = optional(string, "disabled")
+    required_signatures             = optional(bool, false)
     required_linear_history         = optional(bool, true)
     required_approving_review_count = optional(number, 0)
     require_last_push_approval      = optional(bool, false)
@@ -108,6 +109,7 @@ resource "github_repository_ruleset" "branch_protection" {
       require_last_push_approval      = each.value.require_last_push_approval
     }
     required_linear_history = each.value.required_linear_history
+    required_signatures     = each.value.required_signatures
   }
 }
 
