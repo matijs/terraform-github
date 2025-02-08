@@ -1,28 +1,3 @@
-variable "repos" {
-  type = map(object({
-    description                     = optional(string)
-    homepage_url                    = optional(string)
-    allow_auto_merge                = optional(bool, true)
-    allow_merge_commit              = optional(bool, false)
-    allow_rebase_merge              = optional(bool, true)
-    allow_squash_merge              = optional(bool, true)
-    allow_update_branch             = optional(bool, true)
-    delete_branch_on_merge          = optional(bool, true)
-    has_discussions                 = optional(bool, false)
-    has_downloads                   = optional(bool, false)
-    has_issues                      = optional(bool, true)
-    has_projects                    = optional(bool, false)
-    has_wiki                        = optional(bool, false)
-    is_template                     = optional(bool, false)
-    secret_scanning                 = optional(string, "enabled")
-    secret_scanning_push_protection = optional(string, "enabled")
-    topics                          = optional(list(string), [])
-    visibility                      = optional(string, "public")
-    vulnerability_alerts            = optional(bool, true)
-    web_commit_signoff_required     = optional(bool, false)
-  }))
-}
-
 variable "branch_protections" {
   type = list(object({
     name                            = string
@@ -37,18 +12,7 @@ variable "branch_protections" {
   }))
 }
 
-variable "branch_rulesets" {
-  type = map(object({
-    name                            = optional(string, "main-branch-protection")
-    enforcement                     = optional(string, "disabled")
-    required_signatures             = optional(bool, false)
-    required_linear_history         = optional(bool, true)
-    required_approving_review_count = optional(number, 0)
-    require_last_push_approval      = optional(bool, false)
-  }))
-}
-
-resource "github_repository" "r" {
+resource "github_repository" "repository" {
   for_each = var.repos
 
   name                        = each.key
@@ -114,8 +78,8 @@ resource "github_repository_ruleset" "branch_protection" {
 resource "github_branch_protection" "b" {
   for_each = { for p in var.branch_protections : p.name => p }
 
-  repository_id           = github_repository.r[each.value.name].node_id
-  pattern                 = github_repository.r[each.value.name].default_branch
+  repository_id           = github_repository.repository[each.value.name].node_id
+  pattern                 = github_repository.repository[each.value.name].default_branch
   enforce_admins          = each.value.enforce_admins
   allows_deletions        = each.value.allows_deletions
   allows_force_pushes     = each.value.allows_force_pushes
@@ -134,7 +98,7 @@ resource "github_branch_protection" "b" {
 }
 
 resource "github_branch" "main" {
-  for_each = github_repository.r
+  for_each = github_repository.repository
 
   repository = each.value.name
   branch     = "main"
