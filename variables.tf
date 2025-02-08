@@ -29,10 +29,10 @@ variable "repositories" {
   }))
 }
 
-variable "branch_rulesets" {
+variable "rulesets" {
   type = map(object({
     name                            = optional(string, "main-branch-protection")
-    enforcement                     = optional(string, "disabled")
+    enforcement                     = optional(string, "active")
     required_signatures             = optional(bool, false)
     required_linear_history         = optional(bool, true)
     required_approving_review_count = optional(number, 0)
