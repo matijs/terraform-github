@@ -32,7 +32,7 @@ variable "repositories" {
 variable "rulesets" {
   type = map(object({
     enforcement = optional(string, "active")
-    name        = optional(string, "main-branch-protection")
+    name        = optional(string, "default-branch-protection")
 
     rules = object({
       non_fast_forward              = optional(bool, true)
