@@ -1,6 +1,5 @@
 variable "repos" {
-  type = list(object({
-    name                            = string
+  type = map(object({
     description                     = optional(string)
     homepage_url                    = optional(string)
     allow_auto_merge                = optional(bool, true)
@@ -39,9 +38,8 @@ variable "branch_protections" {
 }
 
 variable "branch_rulesets" {
-  type = list(object({
+  type = map(object({
     name                            = optional(string, "main-branch-protection")
-    repository                      = string
     enforcement                     = optional(string, "disabled")
     required_signatures             = optional(bool, false)
     required_linear_history         = optional(bool, true)
@@ -51,9 +49,9 @@ variable "branch_rulesets" {
 }
 
 resource "github_repository" "r" {
-  for_each = { for repo in var.repos : repo.name => repo }
+  for_each = var.repos
 
-  name                        = each.value.name
+  name                        = each.key
   description                 = each.value.description != null ? "${each.value.description} (managed by Terraform)" : "managed by Terraform"
   homepage_url                = each.value.homepage_url
   auto_init                   = true
@@ -89,11 +87,11 @@ resource "github_repository" "r" {
 }
 
 resource "github_repository_ruleset" "branch_protection" {
-  for_each = { for r in var.branch_rulesets : r.repository => r }
+  for_each = var.branch_rulesets
 
-  name        = each.value.name
-  repository  = each.value.repository
   enforcement = each.value.enforcement
+  name        = each.value.name
+  repository  = each.key
   target      = "branch"
 
   conditions {

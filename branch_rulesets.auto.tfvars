@@ -1,7 +1,6 @@
-branch_rulesets = [
-  {
+branch_rulesets = {
+  "til" = {
     enforcement         = "active"
-    repository          = "til"
     required_signatures = true
   }
-]
+}

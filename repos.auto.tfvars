@@ -1,20 +1,15 @@
-repos = [
-  {
-    name        = "github-terraform"
+repos = {
+  "github-terraform" = {
     description = "Create GitHub repositories using Terraform"
     topics      = ["terraform", "github"]
   },
-  {
-    name        = "lab.probablerobot.net"
+  "lab.probablerobot.net" = {
     description = "Experiments and such"
   },
-  {
-    name        = "dockerfiles"
+  "dockerfiles" = {
     description = "Dockerfiles"
   },
-  {
-    name        = "til"
+  "til" = {
     description = "Today I Learned"
   }
-]
-
+}
