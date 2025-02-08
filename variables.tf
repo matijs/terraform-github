@@ -35,6 +35,11 @@ variable "rulesets" {
     name        = optional(string, "main-branch-protection")
 
     rules = object({
+      non_fast_forward              = optional(bool, true)
+      required_linear_history       = optional(bool, true)
+      required_signatures           = optional(bool, false)
+      update_allows_fetch_and_merge = optional(bool, false)
+
       pull_request = object({
         dismiss_stale_reviews_on_push     = optional(bool, false)
         require_code_owner_review         = optional(bool, false)
@@ -42,9 +47,7 @@ variable "rulesets" {
         required_approving_review_count   = optional(number, 0)
         required_review_thread_resolution = optional(bool, false)
       })
-      required_linear_history       = optional(bool, true)
-      required_signatures           = optional(bool, false)
-      update_allows_fetch_and_merge = optional(bool, false)
+
       required_status_checks = optional(object({
         do_not_enforce_on_create = optional(bool, false)
         required_check = list(object({

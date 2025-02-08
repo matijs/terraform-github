@@ -14,6 +14,10 @@ resource "github_repository_ruleset" "ruleset" {
   }
 
   rules {
+    non_fast_forward        = each.value.rules.non_fast_forward
+    required_linear_history = each.value.rules.required_linear_history
+    required_signatures     = each.value.rules.required_signatures
+
     pull_request {
       dismiss_stale_reviews_on_push     = each.value.rules.pull_request.dismiss_stale_reviews_on_push
       require_code_owner_review         = each.value.rules.pull_request.require_code_owner_review
@@ -21,18 +25,20 @@ resource "github_repository_ruleset" "ruleset" {
       required_approving_review_count   = each.value.rules.pull_request.required_approving_review_count
       required_review_thread_resolution = each.value.rules.pull_request.required_review_thread_resolution
     }
-    required_linear_history = each.value.rules.required_linear_history
-    required_signatures     = each.value.rules.required_signatures
+
     dynamic "required_status_checks" {
       for_each = each.value.rules.required_status_checks != null ? [each.value.rules.required_status_checks] : []
+
       content {
+        strict_required_status_checks_policy = required_status_checks.value.strict_required_status_checks_policy
+
         dynamic "required_check" {
           for_each = required_status_checks.value.required_check
+
           content {
             context = required_check.value.context
           }
         }
-        strict_required_status_checks_policy = required_status_checks.value.strict_required_status_checks_policy
       }
     }
   }
