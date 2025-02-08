@@ -13,7 +13,7 @@ variable "branch_protections" {
 }
 
 resource "github_repository" "repository" {
-  for_each = var.repos
+  for_each = var.repositories
 
   name                        = each.key
   description                 = each.value.description != null ? "${each.value.description} (managed by Terraform)" : "managed by Terraform"

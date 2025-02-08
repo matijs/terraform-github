@@ -4,7 +4,7 @@ variable "GITHUB_TOKEN" {
   sensitive   = true
 }
 
-variable "repos" {
+variable "repositories" {
   type = map(object({
     description                     = optional(string)
     homepage_url                    = optional(string)

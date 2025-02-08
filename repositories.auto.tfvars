@@ -1,4 +1,4 @@
-repos = {
+repositories = {
   "github-terraform" = {
     description = "Create GitHub repositories using Terraform"
     topics      = ["terraform", "github"]
