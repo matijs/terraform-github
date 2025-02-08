@@ -35,6 +35,7 @@ variable "rulesets" {
     name        = optional(string, "default-branch-protection")
 
     rules = object({
+      deletion                      = optional(bool, true)
       non_fast_forward              = optional(bool, true)
       required_linear_history       = optional(bool, true)
       required_signatures           = optional(bool, false)

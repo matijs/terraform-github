@@ -14,6 +14,7 @@ resource "github_repository_ruleset" "ruleset" {
   }
 
   rules {
+    deletion                = each.value.rules.deletion
     non_fast_forward        = each.value.rules.non_fast_forward
     required_linear_history = each.value.rules.required_linear_history
     required_signatures     = each.value.rules.required_signatures
