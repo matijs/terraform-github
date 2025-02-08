@@ -1,5 +1,22 @@
 rulesets = {
   "til" = {
-    required_signatures = true
+    rules = {
+      pull_request        = {}
+      required_signatures = true
+    }
+  },
+  "github-terraform" = {
+    rules = {
+      pull_request        = {}
+      required_signatures = true
+      required_status_checks = {
+        required_check = [
+          { context = "Terraform format check" },
+          { context = "Terraform Cloud/matijs/repo-id-xTdtApDiyNBVUu6g" },
+          { context = "no-fixups" },
+        ]
+        strict_required_status_checks_policy = true
+      }
+    }
   }
 }
