@@ -36,15 +36,15 @@ resource "github_repository" "repository" {
   }
 }
 
-resource "github_branch" "main" {
+resource "github_branch" "branch" {
   for_each = github_repository.repository
 
   repository = each.value.name
   branch     = "main"
 }
 
-resource "github_branch_default" "main" {
-  for_each = github_branch.main
+resource "github_branch_default" "branch_default" {
+  for_each = github_branch.branch
 
   repository = each.value.repository
   branch     = each.value.branch
