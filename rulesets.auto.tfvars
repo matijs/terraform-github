@@ -18,5 +18,27 @@ rulesets = {
         strict_required_status_checks_policy = true
       }
     }
+  },
+  "lab.probablerobot.net" = {
+    rules = {
+      pull_request = {}
+      required_status_checks = {
+        required_check = [
+          { context = "deploy/netlify" },
+          { context = "no-fixups" },
+        ]
+        strict_required_status_checks_policy = true
+      }
+    }
+  },
+  "dockerfiles" = {
+    rules = {
+      pull_request = {}
+      required_status_checks = {
+        required_check = [
+          { context = "no-fixups" }
+        ]
+      }
+    }
   }
 }

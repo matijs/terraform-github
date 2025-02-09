@@ -1,17 +1,3 @@
-variable "branch_protections" {
-  type = list(object({
-    name                            = string
-    enforce_admins                  = optional(bool, true)
-    allows_deletions                = optional(bool, false)
-    allows_force_pushes             = optional(bool, false)
-    required_linear_history         = optional(bool, true)
-    strict                          = optional(bool, true)
-    contexts                        = optional(list(string), [])
-    required_approving_review_count = optional(number, 0)
-    require_last_push_approval      = optional(bool, false)
-  }))
-}
-
 resource "github_repository" "repository" {
   for_each = var.repositories
 
@@ -47,28 +33,6 @@ resource "github_repository" "repository" {
 
   lifecycle {
     prevent_destroy = true
-  }
-}
-
-resource "github_branch_protection" "b" {
-  for_each = { for p in var.branch_protections : p.name => p }
-
-  repository_id           = github_repository.repository[each.value.name].node_id
-  pattern                 = github_repository.repository[each.value.name].default_branch
-  enforce_admins          = each.value.enforce_admins
-  allows_deletions        = each.value.allows_deletions
-  allows_force_pushes     = each.value.allows_force_pushes
-  required_linear_history = each.value.required_linear_history
-
-  required_status_checks {
-    # this is only honoured if there is a GitHub status check (a context)
-    strict   = each.value.strict
-    contexts = each.value.contexts
-  }
-
-  required_pull_request_reviews {
-    required_approving_review_count = each.value.required_approving_review_count
-    require_last_push_approval      = each.value.require_last_push_approval
   }
 }
 
