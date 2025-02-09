@@ -41,12 +41,15 @@ variable "rulesets" {
       required_signatures           = optional(bool, false)
       update_allows_fetch_and_merge = optional(bool, false)
 
-      pull_request = object({
+      pull_request = optional(object({
         dismiss_stale_reviews_on_push     = optional(bool, false)
         require_code_owner_review         = optional(bool, false)
         require_last_push_approval        = optional(bool, false)
         required_approving_review_count   = optional(number, 0)
         required_review_thread_resolution = optional(bool, false)
+        }), {
+        # always require at least a pull request
+        required_approving_review_count = 0
       })
 
       required_status_checks = optional(object({

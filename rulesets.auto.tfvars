@@ -1,13 +1,11 @@
 rulesets = {
   "til" = {
     rules = {
-      pull_request        = {}
       required_signatures = true
     }
   },
   "github-terraform" = {
     rules = {
-      pull_request        = {}
       required_signatures = true
       required_status_checks = {
         required_check = [
@@ -21,7 +19,6 @@ rulesets = {
   },
   "lab.probablerobot.net" = {
     rules = {
-      pull_request = {}
       required_status_checks = {
         required_check = [
           { context = "deploy/netlify" },
@@ -33,7 +30,6 @@ rulesets = {
   },
   "dockerfiles" = {
     rules = {
-      pull_request = {}
       required_status_checks = {
         required_check = [
           { context = "no-fixups" }
