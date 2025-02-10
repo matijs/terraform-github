@@ -40,6 +40,7 @@ variable "rulesets" {
       non_fast_forward              = optional(bool, true)
       required_linear_history       = optional(bool, true)
       required_signatures           = optional(bool, false)
+      update                        = optional(bool, false)
       update_allows_fetch_and_merge = optional(bool, false)
 
       pull_request = optional(object({

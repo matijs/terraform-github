@@ -19,6 +19,7 @@ resource "github_repository_ruleset" "ruleset" {
     non_fast_forward        = each.value.rules.non_fast_forward
     required_linear_history = each.value.rules.required_linear_history
     required_signatures     = each.value.rules.required_signatures
+    update                  = each.value.rules.update
 
     pull_request {
       dismiss_stale_reviews_on_push     = each.value.rules.pull_request.dismiss_stale_reviews_on_push
