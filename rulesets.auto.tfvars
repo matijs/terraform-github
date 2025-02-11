@@ -17,6 +17,18 @@ rulesets = {
       }
     }
   },
+  "probablerobot.net" = {
+    rules = {
+      required_signatures = true
+      required_status_checks = {
+        required_check = [
+          { context = "deploy/netlify" },
+          { context = "check" },
+        ]
+        strict_required_Status_checks_policy = true
+      }
+    }
+  },
   "lab.probablerobot.net" = {
     rules = {
       required_status_checks = {
