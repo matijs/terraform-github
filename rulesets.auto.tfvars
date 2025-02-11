@@ -2,7 +2,6 @@ rulesets = {
   "til" = {
     rules = {
       required_signatures = true
-      update              = true
     }
   },
   "github-terraform" = {

@@ -14,12 +14,13 @@ resource "github_repository_ruleset" "ruleset" {
   }
 
   rules {
-    creation                = each.value.rules.creation
-    deletion                = each.value.rules.deletion
-    non_fast_forward        = each.value.rules.non_fast_forward
-    required_linear_history = each.value.rules.required_linear_history
-    required_signatures     = each.value.rules.required_signatures
-    update                  = each.value.rules.update
+    creation                      = each.value.rules.creation
+    deletion                      = each.value.rules.deletion
+    non_fast_forward              = each.value.rules.non_fast_forward
+    required_linear_history       = each.value.rules.required_linear_history
+    required_signatures           = each.value.rules.required_signatures
+    update                        = each.value.rules.update
+    update_allows_fetch_and_merge = each.value.rules.update_allows_fetch_and_merge
 
     pull_request {
       dismiss_stale_reviews_on_push     = each.value.rules.pull_request.dismiss_stale_reviews_on_push
