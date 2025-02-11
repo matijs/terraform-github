@@ -2,7 +2,7 @@ resource "github_repository" "repository" {
   for_each = var.repositories
 
   name                        = each.key
-  description                 = each.value.description != null ? "${each.value.description} (managed by Terraform)" : "managed by Terraform"
+  description                 = each.value.description
   homepage_url                = each.value.homepage_url
   auto_init                   = true
   allow_auto_merge            = (each.value.visibility == "private" ? false : each.value.allow_auto_merge)
