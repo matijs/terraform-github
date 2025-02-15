@@ -40,7 +40,8 @@ resource "github_repository_ruleset" "ruleset" {
           for_each = required_status_checks.value.required_check
 
           content {
-            context = required_check.value.context
+            context        = required_check.value.context
+            integration_id = required_check.value.integration_id
           }
         }
       }
