@@ -44,8 +44,8 @@ variable "rulesets" {
       update_allows_fetch_and_merge = optional(bool, false)
 
       pull_request = optional(object({
-        dismiss_stale_reviews_on_push     = optional(bool, false)
-        require_code_owner_review         = optional(bool, false)
+        dismiss_stale_reviews_on_push     = optional(bool, true)
+        require_code_owner_review         = optional(bool, true)
         require_last_push_approval        = optional(bool, false)
         required_approving_review_count   = optional(number, 0)
         required_review_thread_resolution = optional(bool, false)
