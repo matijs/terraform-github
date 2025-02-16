@@ -71,6 +71,7 @@ rulesets = {
   },
   "no-fixups-action" = {
     rules = {
+      required_signatures = true
       required_status_checks = {
         required_check = [
           {
