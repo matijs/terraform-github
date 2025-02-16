@@ -1,7 +1,10 @@
 repositories = {
   "github-terraform" = {
     description = "Create GitHub repositories using Terraform"
-    topics      = ["terraform", "github"]
+    topics = [
+      "terraform",
+      "github",
+    ]
   },
   "probablerobot.net" = {
     description  = "Source code for https://probablerobot.net"
@@ -16,5 +19,19 @@ repositories = {
   },
   "til" = {
     description = "Today I Learned"
+  }
+  "no-fixups-action" = {
+    description = "GitHub Action that can be used as a blocking status check when there are 'amend!', 'fixup!', or 'squash!' commits in a pull request"
+    topics = [
+      "amend",
+      "autosquash",
+      "commit",
+      "fixup",
+      "git",
+      "github-action",
+      "pull-request",
+      "rebase",
+      "squash",
+    ]
   }
 }

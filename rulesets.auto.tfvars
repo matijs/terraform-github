@@ -69,6 +69,23 @@ rulesets = {
       }
     }
   },
+  "no-fixups-action" = {
+    rules = {
+      required_status_checks = {
+        required_check = [
+          {
+            context        = "ShellCheck"
+            integration_id = 15368
+          },
+          {
+            context        = "Dogfooding"
+            integration_id = 15368
+          }
+        ]
+        strict_required_status_checks_pollicy = true
+      }
+    }
+  },
   "dockerfiles" = {
     rules = {
       required_status_checks = {
