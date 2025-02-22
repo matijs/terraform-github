@@ -49,3 +49,10 @@ resource "github_branch_default" "branch_default" {
   repository = each.value.repository
   branch     = each.value.branch
 }
+
+resource "github_repository_dependabot_security_updates" "dependabot_security_updates" {
+  for_each = github_repository.repository
+
+  repository = each.value.name
+  enabled    = true
+}
