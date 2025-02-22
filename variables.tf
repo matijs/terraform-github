@@ -60,7 +60,7 @@ variable "rulesets" {
           context        = string
           integration_id = optional(number, 0)
         }))
-        strict_required_status_checks_policy = optional(bool, false)
+        strict_required_status_checks_policy = optional(bool, true)
       }))
     })
   }))

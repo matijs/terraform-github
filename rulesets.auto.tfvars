@@ -26,7 +26,6 @@ rulesets = {
             integration_id = 15368
           },
         ]
-        strict_required_status_checks_policy = true
       }
     }
   },
@@ -48,7 +47,6 @@ rulesets = {
             integration_id = 15368
           },
         ]
-        strict_required_Status_checks_policy = true
       }
     }
   },
@@ -65,7 +63,6 @@ rulesets = {
             integration_id = 15368
           },
         ]
-        strict_required_status_checks_policy = true
       }
     }
   },
@@ -83,7 +80,6 @@ rulesets = {
             integration_id = 15368
           }
         ]
-        strict_required_status_checks_pollicy = true
       }
     }
   },
