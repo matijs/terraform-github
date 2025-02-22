@@ -25,6 +25,10 @@ rulesets = {
             context        = "no-fixups"
             integration_id = 15368
           },
+          {
+            context        = "CodeQL"
+            integration_id = 57789
+          },
         ]
       }
     }
