@@ -1,4 +1,7 @@
 rulesets = {
+  "me-bot" = {
+    rules = {}
+  },
   "til" = {
     rules = {
       required_signatures = true

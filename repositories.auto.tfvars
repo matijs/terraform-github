@@ -1,4 +1,7 @@
 repositories = {
+  "me-bot" = {
+    description = "me-bot"
+  },
   "github-terraform" = {
     description = "Create GitHub repositories using Terraform"
     topics = [
