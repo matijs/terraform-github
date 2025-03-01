@@ -39,7 +39,7 @@ variable "rulesets" {
       deletion                      = optional(bool, true)
       non_fast_forward              = optional(bool, true)
       required_linear_history       = optional(bool, true)
-      required_signatures           = optional(bool, false)
+      required_signatures           = optional(bool, true)
       update                        = optional(bool, false)
       update_allows_fetch_and_merge = optional(bool, false)
 
