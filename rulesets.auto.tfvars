@@ -1,7 +1,14 @@
 rulesets = {
   "til" = {
     rules = {
-      required_signatures = true
+      required_status_checks = {
+        required_check = [
+          {
+            context        = "prettier-check"
+            integration_id = 15368
+          }
+        ]
+      }
     }
   },
   "github-terraform" = {
@@ -10,7 +17,6 @@ rulesets = {
         require_code_owner_review = true
       }
 
-      required_signatures = true
       required_status_checks = {
         required_check = [
           {
