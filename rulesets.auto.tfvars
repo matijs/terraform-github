@@ -1,16 +1,4 @@
 rulesets = {
-  "til" = {
-    rules = {
-      required_status_checks = {
-        required_check = [
-          {
-            context        = "prettier-check"
-            integration_id = 15368
-          }
-        ]
-      }
-    }
-  },
   "github-terraform" = {
     rules = {
       pull_request = {

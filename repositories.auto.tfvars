@@ -17,9 +17,6 @@ repositories = {
   "dockerfiles" = {
     description = "Dockerfiles"
   },
-  "til" = {
-    description = "Today I Learned"
-  }
   "no-fixups-action" = {
     description  = "GitHub Action that can be used as a blocking status check when there are 'amend!', 'fixup!', or 'squash!' commits in a pull request"
     homepage_url = "https://github.com/matijs/no-fixups-action?tab=readme-ov-file#no-fixups-action"
