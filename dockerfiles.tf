@@ -7,7 +7,7 @@ module "dockerfiles" {
   required_checks = [
     {
       context        = "no-fixups"
-      integration_id = 15386
+      integration_id = 15368
     }
   ]
 }
