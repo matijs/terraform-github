@@ -1,28 +1,4 @@
 rulesets = {
-  "github-terraform" = {
-    rules = {
-      pull_request = {
-        require_code_owner_review = true
-      }
-
-      required_status_checks = {
-        required_check = [
-          {
-            context        = "Terraform format check"
-            integration_id = 15368
-          },
-          {
-            context        = "Terraform Cloud/matijs/repo-id-xTdtApDiyNBVUu6g"
-            integration_id = 39328
-          },
-          {
-            context        = "no-fixups"
-            integration_id = 15368
-          },
-        ]
-      }
-    }
-  },
   "probablerobot.net" = {
     rules = {
       required_signatures = true
