@@ -1,5 +1,5 @@
 module "til" {
-  source = "./modules/repository"
+  source = "../modules/repository"
 
   name        = "til"
   description = "Today I Learned"

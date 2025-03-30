@@ -1,5 +1,5 @@
 module "no-fixups-action" {
-  source = "./modules/repository"
+  source = "../modules/repository"
 
   name         = "no-fixups-action"
   description  = "GitHub Action that can be used as a blocking status check when there are 'amend!', 'fixup!', or 'squash!' commits in a pull request"

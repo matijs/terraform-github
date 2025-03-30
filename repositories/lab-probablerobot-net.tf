@@ -1,5 +1,5 @@
 module "lab-probablerobot-net" {
-  source = "./modules/repository"
+  source = "../modules/repository"
 
   name         = "lab.probablerobot.net"
   description  = "Source code for https://lab.probablerobot.net"

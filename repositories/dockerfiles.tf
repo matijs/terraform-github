@@ -1,5 +1,5 @@
 module "dockerfiles" {
-  source = "./modules/repository"
+  source = "../modules/repository"
 
   name        = "dockerfiles"
   description = "Dockerfiles"

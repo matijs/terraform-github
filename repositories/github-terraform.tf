@@ -1,5 +1,5 @@
 module "github-terraform" {
-  source = "./modules/repository"
+  source = "../modules/repository"
 
   name        = "github-terraform"
   description = "Create GitHub repositories using Terraform"
