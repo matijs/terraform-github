@@ -8,10 +8,24 @@ module "probablerobot-net" {
   # github_repository_ruleset required_status_checks
   required_checks = [
     {
-      context = "check"
+      context        = "Header rules"
+      integration_id = 13473
     },
     {
-      context = "no-fixups"
+      context        = "Pages changed"
+      integration_id = 13473
     },
+    {
+      context        = "Redirect rules"
+      integration_id = 13473
+    },
+    {
+      context        = "check"
+      integration_id = 15368
+    },
+    {
+      context        = "no-fixups"
+      integration_id = 15368
+    }
   ]
 }
