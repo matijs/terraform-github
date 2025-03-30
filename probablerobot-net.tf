@@ -8,16 +8,13 @@ module "probablerobot-net" {
   # github_repository_ruleset required_status_checks
   required_checks = [
     {
-      context        = "deploy/netlify"
-      integration_id = 13473
+      context = "deploy/netlify"
     },
     {
-      context        = "check"
-      integration_id = 15368
+      context = "check"
     },
     {
-      context        = "no-fixups"
-      integration_id = 15368
+      context = "no-fixups"
     },
   ]
 }
