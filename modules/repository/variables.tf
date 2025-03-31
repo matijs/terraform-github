@@ -24,7 +24,7 @@ variable "allow_rebase_merge" {
 variable "allow_squash_merge" {
   description = "(optional) Set to `true` to allow squash merges."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "allow_update_branch" {
