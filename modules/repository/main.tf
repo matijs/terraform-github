@@ -53,6 +53,10 @@ resource "github_repository" "this" {
       status = var.secret_scanning_push_protection_status
     }
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "github_branch" "this" {
