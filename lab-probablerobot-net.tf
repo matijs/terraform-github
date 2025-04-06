@@ -7,18 +7,6 @@ module "lab-probablerobot-net" {
 
   # github_repository_ruleset required_status_checks
   required_checks = [
-    #{
-    #context        = "Header rules"
-    #integration_id = 13473
-    #},
-    #{
-    #context        = "Pages changed"
-    #integration_id = 13473
-    #},
-    #{
-    #context        = "Redirect rules"
-    #integration_id = 13473
-    #},
     {
       context        = "lint"
       integration_id = 15368
@@ -26,6 +14,10 @@ module "lab-probablerobot-net" {
     {
       context        = "no-fixups"
       integration_id = 15368
+    },
+    {
+      context        = "CodeQL"
+      integration_id = 57789
     }
   ]
 }
