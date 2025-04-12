@@ -3,8 +3,6 @@ module "matijs-github-io" {
 
   name = "matijs.github.io"
 
-  default_branch = "master"
-
   pages = {
     build_type = "legacy"
     source = {

@@ -59,10 +59,17 @@ resource "github_repository" "this" {
   }
 }
 
+# get the current state of the repository
+data "github_repository" "this" {
+  name = github_repository.this.name
+}
+
 resource "github_branch_default" "this" {
   repository = github_repository.this.name
 
   branch = var.default_branch
+  # check if the current name of the default branch is different from the desired name
+  rename = data.github_repository.this.default_branch != var.default_branch
 }
 
 resource "github_repository_dependabot_security_updates" "this" {
