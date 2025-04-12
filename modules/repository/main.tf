@@ -25,7 +25,7 @@ resource "github_repository" "this" {
     for_each = var.pages != null ? [var.pages] : []
 
     content {
-      build_type = "workflow"
+      build_type = lookup(pages.value, "build_type", "workflow")
       cname      = pages.value.cname
 
       source {

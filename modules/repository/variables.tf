@@ -114,6 +114,7 @@ variable "vulnerability_alerts" {
 variable "pages" {
   description = "(optional) Enable GitHub Pages for the repository."
   type = object({
+    build_type = optional(string)
     cname = optional(string)
 
     source = object({
