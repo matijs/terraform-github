@@ -59,16 +59,10 @@ resource "github_repository" "this" {
   }
 }
 
-resource "github_branch" "this" {
-  repository = github_repository.this.name
-
-  branch = var.default_branch
-}
-
 resource "github_branch_default" "this" {
   repository = github_repository.this.name
 
-  branch = github_branch.this.branch
+  branch = var.default_branch
 }
 
 resource "github_repository_dependabot_security_updates" "this" {
