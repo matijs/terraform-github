@@ -87,7 +87,7 @@ resource "github_repository_ruleset" "default" {
 
   conditions {
     ref_name {
-      include = ["~DEFAULT_BRANCH"]
+      include = ["~DEFAULT_BRANCH", "refs/heads/main"]
       exclude = []
     }
   }
