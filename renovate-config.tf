@@ -1,6 +1,6 @@
-module "renovate" {
+module "renovate-config" {
   source = "./modules/repository"
 
-  name        = "renovate"
+  name        = "renovate-config"
   description = "Renovate configuration"
 }
