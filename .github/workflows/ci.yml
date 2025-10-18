@@ -1,9 +1,30 @@
 name: CI
 
-on: pull_request
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   no-fixups:
     runs-on: ubuntu-latest
     steps:
       - uses: matijs/no-fixups-action@8dfcf79304e29c3aa37e327cfc1d3685dca3c6c0 # v1.1.4
+
+  terraform:
+    name: Terraform format check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
+        with:
+          terraform_version: '~> 1.11.0'
+          # no need for the wrapper
+          terraform_wrapper: false
+      - run: terraform fmt -check
+
