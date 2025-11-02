@@ -7,4 +7,11 @@ module "terraform-netlify" {
     "terraform",
     "netlify",
   ]
+
+  required_checks = [
+    {
+      context        = "Terraform Cloud/matijs/repo-id-ryohofGxm6tLFpKk"
+      integration_id = 39328
+    }
+  ]
 }
