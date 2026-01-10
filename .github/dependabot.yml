@@ -2,7 +2,9 @@ version: 2
 
 updates:
   - package-ecosystem: 'terraform'
-    directory: '/'
+    directories:
+      - '/'
+      - '/modules/repository/'
     schedule:
       interval: 'weekly'
       day: 'saturday'
