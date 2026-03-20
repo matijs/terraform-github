@@ -12,7 +12,6 @@ resource "github_repository" "this" {
   delete_branch_on_merge = var.delete_branch_on_merge
   description            = var.description
   has_discussions        = var.has_discussions
-  has_downloads          = false # deprecated
   has_issues             = var.has_issues
   has_projects           = var.has_projects
   has_wiki               = var.has_wiki
