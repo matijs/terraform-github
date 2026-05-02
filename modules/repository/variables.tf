@@ -105,7 +105,7 @@ variable "visibility" {
   default     = "public"
 }
 
-variable "vulnerability_alerts" {
+variable "vulnerability_alerts_enabled" {
   description = "(optional) Set to `false` to disable security alerts for vulnerable dependencies."
   type        = bool
   default     = true

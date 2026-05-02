@@ -18,7 +18,6 @@ resource "github_repository" "this" {
   homepage_url           = var.homepage_url
   topics                 = var.topics
   visibility             = var.visibility
-  vulnerability_alerts   = var.vulnerability_alerts
 
   dynamic "pages" {
     for_each = var.pages != null ? [var.pages] : []
@@ -75,6 +74,12 @@ resource "github_repository_dependabot_security_updates" "this" {
   repository = github_repository.this.name
 
   enabled = var.dependabot_security_updates_enabled
+}
+
+resource "github_repository_vulnerability_alerts" "this" {
+  repository = github_repository.this.name
+
+  enabled = var.vulnerability_alerts_enabled
 }
 
 resource "github_repository_ruleset" "default" {
