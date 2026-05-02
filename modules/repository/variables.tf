@@ -117,10 +117,10 @@ variable "pages" {
     build_type = optional(string)
     cname = optional(string)
 
-    source = object({
+    source = optional(object({
       branch = optional(string)
       path   = string
-    })
+    }))
   })
   default = null
 }

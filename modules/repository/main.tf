@@ -19,20 +19,6 @@ resource "github_repository" "this" {
   topics                 = var.topics
   visibility             = var.visibility
 
-  dynamic "pages" {
-    for_each = var.pages != null ? [var.pages] : []
-
-    content {
-      build_type = lookup(pages.value, "build_type", "workflow")
-      cname      = pages.value.cname
-
-      source {
-        branch = coalesce(pages.value.source.branch, var.default_branch)
-        path   = pages.value.source.path
-      }
-    }
-  }
-
   security_and_analysis {
     dynamic "advanced_security" {
       # For repositories with public visibility, advanced security is always enabled and cannot be changed so this setting cannot be applied.
@@ -54,6 +40,9 @@ resource "github_repository" "this" {
 
   lifecycle {
     prevent_destroy = true
+    ignore_changes = [
+      pages,
+    ]
   }
 }
 
@@ -68,6 +57,24 @@ resource "github_branch_default" "this" {
   branch = var.default_branch
   # check if the current name of the default branch is different from the desired name
   rename = data.github_repository.this.default_branch != var.default_branch
+}
+
+resource "github_repository_pages" "this" {
+  count = var.pages == null ? 0 : 1
+
+  repository = github_repository.this.name
+  # Use `lookup` to provide the default "workflow" instead of providing a default in the variable definition.
+  build_type = lookup(var.pages, "build_type", "workflow")
+
+  dynamic "source" {
+    for_each = var.pages.source == null ? [] : [var.pages.source]
+
+    content {
+      # Use `coalesce` returns the first non-null value.
+      branch = coalesce(source.value.branch, var.default_branch)
+      path   = source.value.path
+    }
+  }
 }
 
 resource "github_repository_dependabot_security_updates" "this" {
