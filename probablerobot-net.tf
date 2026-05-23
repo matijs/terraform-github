@@ -9,15 +9,19 @@ module "probablerobot-net" {
   required_checks = [
     {
       context        = "lint"
-      integration_id = 15368
+      integration_id = 15368 # GitHub Actions
     },
     {
       context        = "no-fixups"
-      integration_id = 15368
+      integration_id = 15368 # Github Actions
     },
     {
       context        = "CodeQL"
-      integration_id = 57789
+      integration_id = 57789 # GitHub Advanced Security
+    },
+    {
+      context        = "zizmor"
+      integration_id = 57789 # GitHub Advanced Security
     }
   ]
 }
