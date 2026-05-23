@@ -4,18 +4,17 @@ updates:
   - package-ecosystem: 'terraform'
     directory: '/'
     schedule:
-      interval: 'weekly'
-      day: 'saturday'
-      time: '00:00'
-      timezone: 'Europe/Amsterdam'
+      interval: 'cron'
+      # Run every Saturday at 00:00.
+      crontab: '0 0 * * 6'
     cooldown:
-      default-days: 5
+      default-days: 7
+
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'weekly'
-      day: 'saturday'
-      time: '00:00'
-      timezone: 'Etc/UTC'
+      interval: 'cron'
+      # Run every Sunday at 00:00.
+      crontab: '0 0 * * 0'
     cooldown:
-      default-days: 5
+      default-days: 7
