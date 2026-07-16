@@ -7,7 +7,11 @@ module "renovate-config" {
   required_checks = [
     {
       context        = "no-fixups"
-      integration_id = 15368
+      integration_id = 15368 # GitHub Actions
+    },
+    {
+      context        = "zizmor"
+      integration_id = 57789 # GitHub Advanced Security
     }
   ]
 }
